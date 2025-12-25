@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Ali Isah J.C Like Minds</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Container for the whole screen */
+        .carousel, .carousel-inner, .carousel-item {
+            height: 100vh;
+            background-color: #1a1a1a; /* Dark background for side gaps if image is narrow */
+        }
+
+        .carousel-item {
+            /* Changed to 'contain' to ensure the whole image fits in the center */
+            background-size: contain; 
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        /* Dark overlay - adjusted to sit behind the text but over the image center */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); 
+            z-index: 1;
+        }
+
+        /* Centered Content */
+        .hero-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            text-align: center;
+            width: 85%;
+            color: white;
+            /* Added a text-shadow to make text readable regardless of image color */
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .btn-member {
+            background-color: #007bff;
+            border: 2px solid white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-member:hover {
+            background-color: white;
+            color: #007bff !important;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="aijcCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        
+        <div class="carousel-inner">
+            <div class="overlay"></div>
+            
+            <div class="carousel-item active" style="background-image: url('/static/images/photo1.jpg');"></div>
+            
+            <div class="carousel-item" style="background-image: url('/static/images/photo2.jpg');"></div>
+            
+            <div class="carousel-item" style="background-image: url('/static/images/photo3.jpg');"></div>
+        </div>
+
+        <div class="hero-container">
+            <h1 class="display-3 fw-bold mb-3">WELCOME</h1>
+            <p class="lead mb-4 fw-bold">Ali Isah J.C Like Minds</p>
+            <a href="/register" class="btn btn-member btn-lg rounded-pill shadow-lg text-white text-decoration-none">
+                CLICK HERE TO BECOME A MEMBER
+            </a>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#aijcCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#aijcCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
