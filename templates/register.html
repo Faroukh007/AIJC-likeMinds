@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration - AIJC Like Minds</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <div class="card mx-auto shadow" style="max-width: 800px;">
+            <div class="card-header bg-primary text-white text-center">
+                <h3>Member Registration Form</h3>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST">
+                    <div class="row g-3">
+                        <div class="col-md-8">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" name="full_name" class="form-control" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Gender</label>
+                            <select name="gender" class="form-select">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Date of Birth</label>
+                            <input type="date" name="dob" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Phone Number</label>
+                            <input type="text" name="phone" class="form-control" required>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" name="email" class="form-control">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Contact Address</label>
+                            <textarea name="address" class="form-control" rows="2"></textarea>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">State of Origin</label>
+                            <input type="text" name="state" class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">LGA</label>
+                            <input type="text" name="lga" class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Ward</label>
+                            <input type="text" name="ward" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Polling Unit Name</label>
+                            <input type="text" name="polling_unit" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Voters Card Number</label>
+                            <input type="text" name="voter_id" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+    <label class="form-label fw-bold">Voters Card Number (VIN)</label>
+    <input type="text" 
+           name="voter_id" 
+           id="voterInput"
+           class="form-control border-primary" 
+           placeholder="Enter VIN"
+           required>
+    
+    <div id="voterHelp" class="form-text text-danger" style="display: none; font-weight: 500;">
+        <i class="bi bi-info-circle"></i> 
+        Find at the back of your PVC e.g. IBRAHIM: 030D F104 7829 6471 363
+    </div>
+</div>
+
+<script>
+    const voterInput = document.getElementById('voterInput');
+    const voterHelp = document.getElementById('voterHelp');
+
+    // Show the message when the user clicks/focuses on the field
+    voterInput.addEventListener('focus', function() {
+        voterHelp.style.display = 'block';
+    });
+
+    // Hide the message when the user clicks away
+    voterInput.addEventListener('blur', function() {
+        if(this.value === "") {
+            voterHelp.style.display = 'none';
+        }
+    });
+</script>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 mt-4 py-2">Submit Registration</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
