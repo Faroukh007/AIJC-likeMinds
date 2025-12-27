@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join AIJC Like Minds</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <div class="card mx-auto shadow-lg border-0" style="max-width: 850px; border-radius: 15px;">
+            <div class="card-header bg-primary text-white text-center py-4">
+                <h2 class="fw-bold mb-0">Member Registration Form</h2>
+                <small>..</small>
+            </div>
+            <div class="card-body p-4 p-md-5">
+                {% if success %}
+                <div class="alert alert-success text-center">
+                    <h4>Registration Successful!</h4>
+                    <p>Thank you for joining the movement. <a href="/">Back to Home</a></p>
+                </div>
+                {% else %}
+                <form method="POST">
+                    <div class="row g-4">
+                        <div class="col-md-8"><label class="form-label fw-bold">Full Name</label><input type="text" name="full_name" class="form-control" required></div>
+                        <div class="col-md-4"><label class="form-label fw-bold">Gender</label><select name="gender" class="form-select"><option>Male</option><option>Female</option></select></div>
+                        <div class="col-md-6"><label class="form-label fw-bold">Date of Birth</label><input type="date" name="dob" class="form-control"></div>
+                        <div class="col-md-6"><label class="form-label fw-bold">Phone Number</label><input type="tel" name="phone" class="form-control" required></div>
+                        <div class="col-12"><label class="form-label fw-bold">Email Address</label><input type="email" name="email" class="form-control"></div>
+                        <div class="col-12"><label class="form-label fw-bold">Contact Address</label><textarea name="address" class="form-control" rows="2"></textarea></div>
+                        
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold text-primary">State</label>
+                            <input type="text" name="state" value="Gombe" class="form-control" readonly>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold text-primary">LGA</label>
+                            <select name="lga" id="lgaSelect" class="form-select" onchange="updateWards()" required>
+                                <option value="">- Select LGA -</option>
+                                <option value="Akko">Akko</option><option value="Balanga">Balanga</option><option value="Billiri">Billiri</option><option value="Dukku">Dukku</option><option value="Funakaye">Funakaye</option><option value="Gombe">Gombe</option><option value="Kaltungo">Kaltungo</option><option value="Kwami">Kwami</option><option value="Nafada">Nafada</option><option value="Shongom">Shongom</option><option value="Yamaltu/Deba">Yamaltu/Deba</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold text-primary">Ward</label>
+                            <select name="ward" id="wardSelect" class="form-select" required><option value="">- Select Ward -</option></select>
+                        </div>
+
+                        <div class="col-md-6"><label class="form-label fw-bold">Polling Unit Name</label><input type="text" name="polling_unit" class="form-control"></div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Voters Card Number</label>
+                            <input type="text" name="voter_id" class="form-control" placeholder="Check back of PVC">
+                            <small class="text-muted">e.g. 030D F104...</small>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 btn-lg mt-5 rounded-pill shadow">Submit Registration</button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const gombeData = {
+            "Akko": ["Abba", "Garko", "Gona", "Guiba", "Kumo Central", "Kumo East", "Kumo North", "Kumo West", "Pindiga", "Tula-Yiri", "Tumu"],
+            "Balanga": ["Bambam", "Bangu", "Dadiya", "Gelengu", "Kindiyo", "Kulani", "Nyuwar", "Swa", "Talasse", "Waja"],
+            "Billiri": ["Billiri North", "Billiri South", "Bare", "Dong", "Kalmai", "Todi", "Tudu Kwaya", "Tal", "Tanglang"],
+            "Dukku": ["Dukku Central", "Dukku South", "East Waziri", "Gombe Abba", "Hashidu", "Jamari", "Lafiya", "Malala", "Waziri North", "Zange"],
+            "Funakaye": ["Ashaka/Magaba", "Bage", "Bajoga", "Bolari West", "Jillahi", "Ribadu", "Tilde", "Tongo"],
+            "Gombe": ["Bajoga", "Bolari East", "Bolari West", "Dawaki", "Gombe North", "Gombe South", "Jekadafari", "Kumbiya-Kumbiya", "Nassarawo", "Pantami", "Shamaki"],
+            "Kaltungo": ["Awak", "Biri", "Kaltungo East", "Kaltungo West", "Kamo", "Tula Baule", "Tula Wange", "Tula Yiri"],
+            "Kwami": ["Boji", "Daban Fulani", "Doho", "Duku-Duku", "Gadam", "Jurara", "Kwami", "Malam Sidi", "Malleri"],
+            "Nafada": ["Barwo/Winde", "Birin Bolewa", "Birin Fulani East", "Birin Fulani West", "Nafada Central", "Nafada North"],
+            "Shongom": ["Burak", "Filiya", "Gundale", "Gwani", "Kulan", "Lalaipido", "Shongom", "Talla"],
+            "Yamaltu/Deba": ["Deba", "Difa/Luboto", "Gwani", "Hinna", "Jagali North", "Jagali South", "Kanuwuri", "Kuri/Lano", "Kwadon/Liji/Kurba", "Wade", "Zambuk"]
+        };
+        function updateWards() {
+            const lga = document.getElementById("lgaSelect").value;
+            const wardSelect = document.getElementById("wardSelect");
+            wardSelect.innerHTML = "<option value=''>- Select Ward -</option>";
+            if (lga && gombeData[lga]) {
+                gombeData[lga].forEach(ward => {
+                    let opt = new Option(ward, ward);
+                    wardSelect.add(opt);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
